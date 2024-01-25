@@ -1,0 +1,28 @@
+                    <div class="input-group ml-2">
+                        {% if calendar_form %}
+                            <form id="calendar_form_id" method="POST">
+                                {% csrf_token %}
+                                <div style="display: flex; align-items: center;">
+                                    {{ calendar_form }}
+                                    <div style="margin-left: 2px;">
+                                        <!-- <button class="btn btn-primary btn-sm" type="submit">Selecteaza</button> -->
+                                        <input type="hidden" name="calendar_form" value="calendar_form">
+                                    </div>
+                                </div>
+                            </form>
+                        {% endif %}
+                     </div>
+  
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var form = document.getElementById('calendar_form_id');
+                var formElements = form.elements;
+
+                for (var i = 0; i < formElements.length; i++) {
+                    formElements[i].addEventListener('change', function () {
+                        form.submit();
+                    });
+                }
+            });
+    </script>
+
